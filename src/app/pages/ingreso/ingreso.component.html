@@ -1,0 +1,111 @@
+<app-header></app-header>
+<div class="container-fluid mt-3">
+    <h3>Registro de Ensamblaje</h3>
+    <hr>
+    <div class="row">
+        <!-- <div class="col-md-2"></div> -->
+        <div class="col-sm-7 col-xs-7">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Caracteristicas de la moto</h5>
+
+                    <form #form="ngForm" class="form-inline" autocomplete="off" (ngSubmit)="guardar(form)">
+                        <div class="form-row">
+                            <div class="form-group col-md-6 mb-2">
+                                <label for="potencia" class="col-sm-4 col-form-label">Ref</label>
+                                <div class="col-sm-8">
+                                    <input required [(ngModel)]="moto.ref" type="text" name="ref" class="form-control" id="potencia">
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6 mb-2">
+                                <label for="modelo" class="col-sm-4 col-form-label">Modelo</label>
+                                <div class="col-sm-8">
+                                    <select [(ngModel)]="moto.modelo" required type="text" name="modelo" class="custom-select w-100 form-control" id="modelo">
+                                        <option></option>
+                                        <option *ngFor="let model of modelos" [value]="model.nombre">{{ model.nombre}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6 mb-2">
+                                <label for="enfriamiento" class="col-sm-4 col-form-label">CPN</label>
+                                <div class="col-sm-8">
+                                    <input required [(ngModel)]="moto.cpn" type="text" name="enfriamiento" class="form-control" id="enfriamiento">
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6 mb-2">
+                                <label for="arranque" class="col-sm-4 col-form-label">C/N</label>
+                                <div class="col-sm-8">
+                                    <input type="text" required [(ngModel)]="moto.cn1" name="arranque" class="form-control" id="arranque">
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6 mb-2">
+                                <label for="cilindraje" class="col-sm-4 col-form-label">Cilindraje</label>
+                                <div class="col-sm-8">
+                                    <input required [(ngModel)]="moto.cilindraje" type="text" name="cilindraje" class="form-control" id="cilindraje">
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6 mb-2">
+                                <label for="chasis" class="col-sm-4 col-form-label">Chasis</label>
+                                <div class="col-sm-8">
+                                    <input required [(ngModel)]="moto.chasis" type="text" name="chasis" class="form-control" id="chasis">
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6 mb-2">
+                                <label for="alimentacion" class="col-sm-4 col-form-label">C/N</label>
+                                <div class="col-sm-8">
+                                    <input type="text" required [(ngModel)]="moto.cn2" name="alimentacion" class="form-control" id="alimentacion">
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6 mb-2">
+                                <label for="motor" class="col-sm-4 col-form-label">Motor</label>
+                                <div class="col-sm-8">
+                                    <input required [(ngModel)]="moto.motor" type="text" name="motor" class="form-control" id="motor">
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-6 mb-2">
+                                <label for="colores" class="col-sm-4 col-form-label">Color</label>
+                                <div class="col-sm-8">
+                                    <input type="text" [(ngModel)]="moto.color1" name="color1" class="form-control" id="colores">
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6 mb-2">
+                                <label for="colores" class="col-sm-4 col-form-label">Color</label>
+                                <div class="col-sm-8">
+                                    <input type="text" [(ngModel)]="moto.color2" name="color2" class="form-control" id="colores">
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group col-md-6 mb-2">
+                                <label for="encendido" class="col-sm-4 col-form-label">Año</label>
+                                <div class="col-sm-8">
+                                    <input type="text" [(ngModel)]="moto.anio" name="anio" class="form-control" id="encendido">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <button [disabled]="form.invalid" type="submit" class="btn btn-success btn-block">Ingresar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5 col-xs-5">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Subir Archivo de importación</h5>
+                    <form enctype="multipart/form-data" class="form-inline">
+                        <div class="form-group">
+                            <input (change)="fileChange($event)" #file class="form-control" type="file" name="archivo" id="archivo">&nbsp;
+                            <button (click)="subir(file.value)" class="btn btn-sm btn-primary">Subir</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+            <img height="300px" src="assets/moto.png">
+        </div>
+    </div>
+</div>

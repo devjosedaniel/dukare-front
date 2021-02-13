@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <img src="assets/icono-dukare.png" width="30" height="30" class="d-inline-block align-top" alt="">
+    <a class="navbar-brand" [routerLink]="['/inicio']" routerLinkActive="router-link-active">Dukare</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li routerLinkActive="active" class="nav-item ">
+                <a class="nav-link" [routerLink]="['/inicio']">Inicio <span class="sr-only">(current)</span></a>
+            </li>
+            <li *ngIf="rol === 'Ensamblador' || rol === 'Administrador'" routerLinkActive="active" class="nav-item">
+                <a class="nav-link" [routerLink]="['/registro']" routerLinkActive="active router-link-active">Registro</a>
+            </li>
+            <li *ngIf="rol === 'Usuario' || rol === 'Administrador'" routerLinkActive="active" class="nav-item">
+                <a class="nav-link" [routerLink]="['/inventario']" routerLinkActive="active router-link-active">Inventario</a>
+            </li>
+            <li *ngIf="rol === 'Ensamblador' || rol === 'Administrador'" routerLinkActive="active" class="nav-item">
+                <a class="nav-link" [routerLink]="['/ingreso']" routerLinkActive="active router-link-active">Ingreso Importación</a>
+            </li>
+            <!-- <li routerLinkActive="active" class="nav-item">
+                <a class="nav-link" [routerLink]="['/modelos']" routerLinkActive="active router-link-active">Modelos</a>
+            </li>
+            <li routerLinkActive="active" class="nav-item">
+                <a class="nav-link" [routerLink]="['/usuario']" routerLinkActive="active router-link-active">Usuarios</a>
+            </li> -->
+            <li *ngIf="rol === 'Administrador'" routerLinkActive="active" class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Administrar
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" [routerLink]="['/modelos']">Modelos</a>
+                    <a class="dropdown-item" [routerLink]="['/usuario']">Usuarios</a>
+                    <div class="dropdown-divider"></div>
+
+                </div>
+            </li>
+        </ul>
+        <span class="text-white pr-3 text-capitalize">{{usuario}} : {{rol}}</span>
+        <button (click)="logout()" class="btn btn-outline-danger">cerrar sesión</button>
+    </div>
+</nav>

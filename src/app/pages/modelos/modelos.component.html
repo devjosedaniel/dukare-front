@@ -1,0 +1,65 @@
+<app-header></app-header>
+
+<div class="container-fluid mt-3">
+    <h3>Administrador de Modelos</h3>
+
+    <hr>
+    <div *ngIf="modelos.length===0" class="text-center p-3 shadow p-3 mb-5 bg-white rounded">
+        No existe registros de modelos Dukare disponibles.
+    </div>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Agregar Modelo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="">Nombre:</label>
+                        <input [(ngModel)]="nuevoModelo" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button [disabled]="nuevoModelo.length===0" (click)="guardarModelo()" type="button" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="text-right">
+        <button data-toggle="modal" data-target="#exampleModal" class="btn btn-sm btn-primary">Agregar modelo</button>
+    </div>
+    <div class="row justify-content-center">
+
+
+        <div class="col-8">
+            <div *ngIf="modelos.length>0" class="table-responsive ">
+                <table class="table  table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>Modelo</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let modelo of modelos; let i = index">
+                            <th>{{i+1}}</th>
+                            <td>{{modelo.nombre}}</td>
+                            <td class="text-center"><button (click)="eliminar(modelo.id, i)" class="btn btn-sm btn-outline-danger">Eliminar</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

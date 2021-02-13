@@ -1,0 +1,49 @@
+<app-header></app-header>
+
+<div class="container-fluid mt-3">
+    <h3>Administrador de Usuarios</h3>
+
+    <hr>
+
+
+
+
+
+
+
+    <div class="text-right">
+        <button [routerLink]="['/usuario/detalle','nuevo']" routerLinkActive="router-link-active" class="btn btn-sm btn-primary">Agregar usuario</button>
+    </div>
+
+    <div *ngIf="usuarios.length===0" class="text-center p-3 shadow p-3 mb-5 bg-white rounded">
+        No existe registros de usuarios disponibles.
+    </div>
+    <div class="row justify-content-center">
+
+
+        <div class="col-8">
+            <div *ngIf="usuarios.length>0" class="table-responsive ">
+                <table class="table  table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>usuario</th>
+                            <th>Rol</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let u of usuarios; let i = index">
+                            <th>{{i+1}}</th>
+                            <td>{{u.usuario}}</td>
+                            <td>{{u.nombrerol}}</td>
+                            <td class="text-center">
+                                <button [routerLink]="['/usuario/detalle',u.id]" routerLinkActive="router-link-active" class="btn btn-sm btn-outline-info mr-1">Editar</button>
+                                <button (click)="eliminar(u.id, i)" class="btn btn-sm btn-outline-danger">Eliminar</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,107 @@
+<app-header></app-header>
+
+<div class="container-fluid mt-3">
+
+    <div class="d-flex flex-row-reverse bd-highlight">
+        <button [routerLink]="['/registro']" routerLinkActive="router-link-active" class="btn btn-sm btn-info">regresar</button>
+    </div>
+
+    <h3>Detalle Moto <small>{{moto.modelo}}</small></h3>
+    <hr>
+
+    <div class="row">
+        <div class="col-md-8 form-inline">
+
+            <div class="form-group col-md-6 mb-2">
+                <label for="potencia" class="col-sm-4 col-form-label">Ref</label>
+                <div class="col-sm-8">
+                    {{moto.ref}}
+                </div>
+            </div>
+            <div class="form-group col-md-6 mb-2">
+                <label for="modelo" class="col-sm-4 col-form-label">Modelo</label>
+                <div class="col-sm-8">
+                    {{moto.modelo}}
+                </div>
+            </div>
+            <div class="form-group col-md-6 mb-2">
+                <label for="enfriamiento" class="col-sm-4 col-form-label">CPN</label>
+                <div class="col-sm-8">
+                    {{moto.cpn}}
+                </div>
+            </div>
+            <div class="form-group col-md-6 mb-2">
+                <label for="arranque" class="col-sm-4 col-form-label">C/N</label>
+                <div class="col-sm-8">
+                    {{moto.cn1}}
+                </div>
+            </div>
+            <div class="form-group col-md-6 mb-2">
+                <label for="cilindraje" class="col-sm-4 col-form-label">Cilindraje</label>
+                <div class="col-sm-8">
+                    {{moto.cilindraje}}
+                </div>
+            </div>
+            <div class="form-group col-md-6 mb-2">
+                <label for="chasis" class="col-sm-4 col-form-label">Chasis</label>
+                <div class="col-sm-8">
+                    {{moto.chasis}}
+                </div>
+            </div>
+            <div class="form-group col-md-6 mb-2">
+                <label for="alimentacion" class="col-sm-4 col-form-label">C/N</label>
+                <div class="col-sm-8">
+                    {{moto.cn2}}
+                </div>
+            </div>
+            <div class="form-group col-md-6 mb-2">
+                <label for="motor" class="col-sm-4 col-form-label">Motor</label>
+                <div class="col-sm-8">
+                    {{moto.motor}}
+                </div>
+            </div>
+            <div class="form-group col-md-6 mb-2">
+                <label for="motor" class="col-sm-4 col-form-label">Color</label>
+                <div class="col-sm-8">
+                    {{moto.color1}}
+                </div>
+            </div>
+            <div class="form-group col-md-6 mb-2">
+                <label for="motor" class="col-sm-4 col-form-label">Color</label>
+                <div class="col-sm-8">
+                    {{moto.color2}}
+                </div>
+            </div>
+            <div class="form-group col-md-6 mb-2">
+                <label for="motor" class="col-sm-4 col-form-label">Año</label>
+                <div class="col-sm-8">
+                    {{moto.anio}}
+                </div>
+            </div>
+
+
+
+
+
+
+
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Actualizar estado</h5>
+                    <select [(ngModel)]="idproceso" class="form-control" name="idproceso" id="idproceso">
+                        <option value="0"></option>
+                        <!-- <option value="1">Iniciado</option> -->
+                        <option *ngIf="moto.idproceso!==2" value="2">Detenido</option>
+                        <option *ngIf="moto.idproceso!==3" value="3">Ensamblado</option>
+                        <option *ngIf="moto.idproceso!==4" value="4">Proceso de calidad</option>
+                        <option *ngIf="moto.idproceso!==5" value="5">Terminado</option>
+                    </select>
+                    <button [disabled]="idproceso === 0" (click)="actualizarEstado()" class="btn btn-sm btn-success mt-2">Actualizar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

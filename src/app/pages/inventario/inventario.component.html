@@ -1,0 +1,48 @@
+<app-header></app-header>
+
+<div class="container-fluid mt-3">
+    <h3>Inventario <small>Dukare</small></h3>
+    <hr>
+    <div class="form-inline">
+        <input [(ngModel)]="fecha" class="form-control form-control-sm mr-2" type="date" name="fecha"><button (click)="buscar()" class="btn btn-sm btn-primary">Buscar</button>
+    </div>
+    <div class="text-right" *ngIf="motos.length>0">
+        <button (click)="reporte()" class="btn btn-sm btn-info">Descargar reporte</button>
+    </div>
+    <div class="row bg-light p-1">
+
+        <!-- <div *ngIf="motos.length>0" class="mb-2">
+
+            <div class="col-md-6 form-inline">
+
+                <div class="form-group">
+                    <input #textobusqueda (keyup.enter)="busqueda(textobusqueda.value)" [(ngModel)]="textobusqueda.value" placeholder="busqueda..." class="form-control" type="text">&nbsp;
+                    <button (click)="busqueda(textobusqueda.value)" [disabled]="textobusqueda.value.length<4" class="btn btn-primary">Buscar</button>
+                </div>
+
+            </div>
+        </div> -->
+
+        <div *ngIf="motos.length>0" class="card-columns">
+
+            <div *ngFor="let moto of motos" class="card">
+                <!-- <img src="..." class="card-img-top" alt="..."> -->
+                <div class="card-body">
+                    <h5 class="card-title font-weight-bold"><img width="23px" src="assets/icono-moto.png"> {{moto.modelo}}</h5>
+                    <hr>
+                    <p class="card-text mb-0"><span class="font-weight-bold">Chasis: </span> {{moto.chasis}}</p>
+                    <p class="card-text mb-0"><span class="font-weight-bold">Motor: </span> {{moto.motor}}</p>
+                    <p class="card-text mb-0"><span class="font-weight-bold">Cilindraje: </span> {{moto.cilindraje}}</p>
+                    <p class="card-text mb-0"><span class="font-weight-bold">Ref: </span> {{moto.ref}}</p>
+                    <p class="card-text mb-0"><span class="font-weight-bold">Estado: </span> <span class="badge badge-{{moto.colorestado}}">{{moto.proceso}}</span></p>
+                    <p class="card-text mb-0"><span class="font-weight-bold">Creado en: </span> {{moto.created_at | date : 'medium'}}</p>
+                    <!-- <button [routerLink]="['/registro/moto',moto.id]" routerLinkActive="router-link-active" class="btn mt-2 btn-block btn-sm btn-outline-info">Detalle</button> -->
+                </div>
+            </div>
+        </div>
+        <div *ngIf="motos.length===0" class="text-center p-3">
+            No hay registros de motos terminadas
+        </div>
+
+    </div>
+</div>
